@@ -1,0 +1,50 @@
+﻿@model ApiGitHubTest.Models.UserResponse
+
+
+@{
+    ViewData["Title"] = "Index";
+}
+<tbody>
+    <div>
+        <center>
+            <img src=@Html.DisplayFor(model => model.Avatar_url) alt="Alternate Text" />
+        </center>
+        <h4>Perfil GitHub</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+
+                <h><strong>Usuario: </strong></h>
+                <hr />
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Login)
+                <hr />
+            </dd>
+
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Repositorios):
+                <hr />
+            </dt>
+            <dd class="col-sm-10">
+                @for (int i = 0; i < Model.Repositorios.Count; i++)
+                {
+                    <h>
+                        @Html.DisplayFor(model => model.Repositorios[i])
+                        <hr />
+                    </h>
+
+                }
+
+                <hr />
+            </dd>
+
+
+
+        </dl>
+    </div>
+    <div>
+        @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+        <a asp-action="Index">Back to List</a>
+    </div>
+</tbody>

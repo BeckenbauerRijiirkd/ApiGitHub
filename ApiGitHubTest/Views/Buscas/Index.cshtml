@@ -1,0 +1,54 @@
+﻿
+@model IEnumerable<ApiGitHubTest.Models.T>
+@{
+    ViewData["Title"] = "Busca";
+
+}
+
+
+<h1>Buscar Repositorios</h1>
+
+<p>
+    Pesquisar por Nome
+    @using (Html.BeginForm("Index", "Buscas", FormMethod.Get))
+    {
+        @Html.TextBox("Pesquisa")
+        
+        <input class="btn btn-primary" type="submit" value="Pesquisar">
+    }
+
+</p>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+
+            <th>
+                <h><strong>Nome</strong></h>
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @{ 
+                    List<String> testg = new List<string>();
+                    testg.Add(item.Name);
+                    testg.Add(item.Owner.Login);
+
+                }
+                @Html.ActionLink("Details", "Details", new { entrada = testg })
+
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

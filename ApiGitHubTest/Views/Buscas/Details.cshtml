@@ -1,0 +1,98 @@
+﻿
+@model ApiGitHubTest.Models.T
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Detalhes Do Repositorio</h1>
+
+<div>
+
+    <hr />
+    <table class="table">
+        <thead>
+            <dl class="row">
+        <tr>
+        <td class="col-sm-2">
+            <h><strong>Nome: </strong></h>
+            <h class="col-sm-10">
+
+                @Html.DisplayFor(model => model.Name)
+            </h>
+        </td>
+        </tr>
+
+        <tr>
+        <td class="col-sm-2">
+
+            <h><strong>Criador:</strong></h>
+
+            <h class="col-sm-10">
+                @Html.DisplayFor(model => model.Owner.Login)
+            </h>
+
+        </td>
+        </tr>
+
+        <tr>
+            <td class="col-sm-2">
+                <h><strong>Descrição:</strong></h>
+            
+
+            <h class="col-sm-10">
+                @Html.DisplayFor(model => model.Description)
+            </h>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="col-sm-2">
+                <h><strong>Linguagem:</strong></h>
+            
+            <h class="col-sm-10">
+                @Html.DisplayFor(model => model.Language)
+            </h>
+             </td>
+        </tr>
+
+        <tr>
+            <td class="col-sm-2">
+                <h><strong>Ultima Atualização:</strong></h>
+            
+            <h class="col-sm-10">
+                @Html.DisplayFor(model => model.Updated_at)
+            </h>
+            </td>
+        </tr>
+        </dl>
+        </thead>
+    </table>
+</div>
+<div>
+
+    
+    <table class="table">
+        <thead>
+            
+            <tr>
+                <td class="col-sm-2">
+                    <h><strong>Colaboradores:</strong></h>
+
+                    @for (int i = 0; i < Model.Contribuitors.Login.Count; i++)
+                    {
+                        <hr />
+                        <h>
+                            @Html.DisplayFor(model => model.Contribuitors.Login[i])
+                        </h>
+
+                    }
+                </td>
+                </tr>
+                
+        </thead>
+    </table>
+    <hr />
+    <div>
+
+        <a class="btn btn-primary" href="../Buscas" role="button">Voltar</a>
+    </div>
